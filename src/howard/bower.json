@@ -7,6 +7,6 @@
     "jquery-validation": "1.14.0",
     "jquery-validation-unobtrusive": "3.2.4",
     "angular": "1.4.6",
-    "blockly-pavps": "https://github.com/PavPS/blockly.git"
+    "blockly": "https://github.com/PavPS/blockly.git"
   }
 }

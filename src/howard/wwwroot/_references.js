@@ -1,6 +1,6 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="../gulpfile.js" />
-/// <reference path="js/collapse.js" />
+/// <reference path="js/pi.js" />
 /// <reference path="js/python.js" />
 /// <reference path="js/site.js" />
 /// <reference path="lib/angular/angular.js" />
