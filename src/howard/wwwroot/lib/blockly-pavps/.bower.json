@@ -1,0 +1,13 @@
+{
+  "name": "blockly-pavps",
+  "homepage": "https://github.com/PavPS/blockly",
+  "_release": "c5f65d284f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "c5f65d284fd6c981cc16025ed875296e98c3bfa1"
+  },
+  "_source": "https://github.com/PavPS/blockly.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/PavPS/blockly.git"
+}
