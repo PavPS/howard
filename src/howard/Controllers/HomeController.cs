@@ -24,7 +24,7 @@ namespace howard.Controllers
         {
             code = WrapCode(code);
 
-            var path = Path.Combine(_environment.WebRootPath, @"scripts\pi.py");
+            var path = Path.Combine(_environment.WebRootPath, "scripts/pi.py");
             System.IO.File.WriteAllText(path, code);
 
             return Json($"Executed:\n{code}");
