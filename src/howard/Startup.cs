@@ -13,6 +13,7 @@ namespace howard
 {
     public class Startup
     {
+        private IHostingEnvironment _environment;
         public Startup(IHostingEnvironment env)
         {
             // Set up configuration sources.
@@ -22,6 +23,8 @@ namespace howard
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            _environment = env;
         }
 
         public IConfigurationRoot Configuration { get; set; }
@@ -29,6 +32,8 @@ namespace howard
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddInstance(_environment);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

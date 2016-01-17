@@ -70,7 +70,6 @@
 
             $.post("@Url.Action("Run")", { code })
                 .done(function(result) {
-                    alert(result);
                 })
                 .fail(function() {
                     alert("Run failed");
