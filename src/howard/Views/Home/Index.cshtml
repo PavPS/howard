@@ -3,13 +3,20 @@
 }
 
 <table style="height: 100%;  width:100%">
-    <tr style="height:20px">
-        <td>
-            <h3>Your algorithm is below</h3>
+    <tr style="height: 20px">
+        <td colspan="3">
+            <button id="run" style="margin-bottom: 5px; margin-top: 5px;" class="btn btn-primary glyphicon glyphicon-play"> Start</button>
         </td>
     </tr>
     <tr>
-        <td id="blocklyArea">
+        <td id="blocklyArea" width="100%">
+            <div id="blocklyDiv"></div>
+        </td>
+        @*<td style="padding:0">
+            <button id="collapse_btn" data-toggle="collapse" data-target="#collapsable" class="btn btn-sm glyphicon glyphicon-adjust" style="height: 100%; margin:0;padding:0"></button>
+        </td>*@
+        <td class="collapse in" id="collapsable" height="100%" >
+            <textarea id="compiled_code" style="height: 100%; width: 300px; border:none"></textarea>
         </td>
     </tr>
 </table>
@@ -22,4 +29,52 @@
     <block type="math_arithmetic"></block>
     <block type="text"></block>
     <block type="text_print"></block>
+    <block type="pi_print"></block>
 </xml>
+
+@section scripts {
+
+    <script>
+        var blocklyArea = document.getElementById('blocklyArea');
+        var blocklyDiv = document.getElementById('blocklyDiv');
+        var workspace = Blockly.inject(blocklyDiv,
+        { toolbox: document.getElementById('toolbox') });
+        var onresize = function(e) {
+            // Compute the absolute coordinates and dimensions of blocklyArea.
+            var element = blocklyArea;
+            var x = 0;
+            var y = 0;
+            do {
+                x += element.offsetLeft;
+                y += element.offsetTop;
+                element = element.offsetParent;
+            } while (element);
+            // Position blocklyDiv over blocklyArea.
+            blocklyDiv.style.left = x + 'px';
+            blocklyDiv.style.top = y + 'px';
+            blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+            blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+        };
+        window.addEventListener('resize', onresize, false);
+        onresize();
+
+        function myUpdateFunction() {
+            var code = Blockly.Python.workspaceToCode(workspace);
+            document.getElementById('compiled_code').value = code;
+        }
+
+        workspace.addChangeListener(myUpdateFunction);
+
+        $("#run").click(function() {
+            var code = Blockly.Python.workspaceToCode(workspace);
+
+            $.post("@Url.Action("Run")", { code })
+                .done(function(result) {
+                    alert(result);
+                })
+                .fail(function() {
+                    alert("Run failed");
+                });
+        });
+    </script>
+}

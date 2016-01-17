@@ -8,6 +8,12 @@ namespace howard.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpPost]
+        public IActionResult Run(string code)
+        {
+            return Json($"Executed:\n{code}");
+        }
+
         public IActionResult Index()
         {
             return View();

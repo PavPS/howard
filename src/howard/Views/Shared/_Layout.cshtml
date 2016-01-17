@@ -44,9 +44,12 @@
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/blockly-pavps/blockly_compressed.js"></script>
+    <script src="~/lib/blockly-pavps/python_compressed.js"></script>
     <script src="~/lib/blockly-pavps/blocks_compressed.js"></script>
     <script src="~/lib/blockly-pavps/msg/js/ru.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/pi.js"></script>
+    <script src="~/js/python.js"></script>
+ <script src="~/js/site.js" asp-append-version="true"></script>
 </environment>
 <environment names="Staging,Production">
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
@@ -60,20 +63,13 @@
             
     </script>
     <script src="~/lib/blockly-pavps/blockly_compressed.js"></script>
+    <script src="~/lib/blockly-pavps/python_compressed.js"></script>
     <script src="~/lib/blockly-pavps/blocks_compressed.js"></script>
     <script src="~/lib/blockly-pavps/msg/js/ru.js"></script>
     <script src="~/js/site.min.js" asp-append-version="true"></script>
 </environment>
 
 @RenderSection("scripts", required: false)
-
-<script>
-    var workspace = Blockly.inject('blocklyArea',
-    {
-        media: '/lib/blockly-pavps/media/',
-        toolbox: document.getElementById('toolbox')
-    });
-</script>
 
 
 </body>
